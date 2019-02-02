@@ -8,6 +8,7 @@ typedef QGuiApplication Application;
 #include <QtQml/QQmlApplicationEngine>
 #include <QtQml/QQmlContext>
 #include <QtWebEngine/qtwebengineglobal.h>
+#include <QIcon>
 
 static QUrl startupUrl()
 {

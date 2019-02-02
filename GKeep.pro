@@ -18,3 +18,5 @@ qtHaveModule(widgets) {
 }
 
 INSTALLS += target
+
+DISTFILES +=

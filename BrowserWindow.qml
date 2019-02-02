@@ -19,14 +19,6 @@ ApplicationWindow {
     visible: true
     title: "GKeep"
 
-    // Make sure the Qt.WindowFullscreenButtonHint is set on OS X.
-    Component.onCompleted: flags = flags | Qt.WindowFullscreenButtonHint
-
-    // Create a styleItem to determine the platform.
-    // When using style "mac", ToolButtons are not supposed to accept focus.
-    QQCPrivate.StyleItem { id: styleItem }
-    property bool platformIsMac: styleItem.style == "mac"
-
     Action {
         shortcut: "Ctrl+0"
         onTriggered: currentWebView.zoomFactor = 1.0
@@ -63,7 +55,7 @@ ApplicationWindow {
 
     TabView {
         id: tabs
-        frameVisible: true
+        frameVisible: false
         tabsVisible: false
 
         anchors.top: parent.top
@@ -88,7 +80,7 @@ ApplicationWindow {
                     request.openIn(window.currentWebView);
                 }
 
-                    onQuotaRequested: function(request) {
+                onQuotaRequested: function(request) {
                     if (request.requestedSize <= 5 * 1024 * 1024)
                         request.accept();
                     else
@@ -123,18 +115,7 @@ ApplicationWindow {
                 }
 
                 onWindowCloseRequested: {
-                    if (tabs.count == 1)
-                        browserWindow.close();
-                    else
-                        tabs.removeTab(tabs.currentIndex);
-                }
-
-                Timer {
-                    id: reloadTimer
-                    interval: 0
-                    running: false
-                    repeat: false
-                    onTriggered: currentWebView.reload()
+                    browserWindow.close();
                 }
             }
         }

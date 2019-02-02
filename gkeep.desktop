@@ -1,0 +1,11 @@
+[Desktop Entry]
+
+Type=Application
+Version=1.0
+Name=GKeep
+Comment=Google Keep
+Path=./GKeep
+Exec=gkeep
+Icon=gkeep
+Terminal=false
+Categories=Indernet;Office;
